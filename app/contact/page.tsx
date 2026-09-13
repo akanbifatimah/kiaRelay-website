@@ -6,6 +6,7 @@ import { contactChannels } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Reach KiaRelay for business inquiries, driver questions, or support.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

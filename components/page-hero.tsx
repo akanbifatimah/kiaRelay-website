@@ -32,7 +32,7 @@ export function PageHero({
       />
 
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl animate-[fade-slide_0.5s_ease]">
           {eyebrow ? (
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">{eyebrow}</p>
           ) : null}

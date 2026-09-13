@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "For Individuals",
   description:
     "Book a delivery, get a transparent price, and track it in real time with a shareable link — photo and signature confirmation on every drop-off.",
+  alternates: { canonical: "/personal" },
 };
 
 export default function PersonalPage() {

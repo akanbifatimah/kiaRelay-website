@@ -25,6 +25,7 @@ export async function generateMetadata({
   return {
     title: industry.name,
     description: industry.complianceNeed,
+    alternates: { canonical: `/industries/${slug}` },
   };
 }
 

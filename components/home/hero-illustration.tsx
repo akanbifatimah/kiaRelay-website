@@ -35,17 +35,29 @@ export function HeroIllustration({
         />
       </svg>
 
-      <div className="absolute bottom-16 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20">
+      <div
+        className="absolute bottom-16 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20"
+        style={{ animation: "float 5s ease-in-out infinite" }}
+      >
         <FromIcon className="h-6 w-6" />
       </div>
-      <div className="absolute right-4 top-8 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
+      <div
+        className="absolute right-4 top-8 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg"
+        style={{ animation: "float 4.5s ease-in-out infinite", animationDelay: "0.4s" }}
+      >
         <ToIcon className="h-6 w-6" />
       </div>
 
-      <div className="absolute left-1/2 top-2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-white text-sidebar shadow-md">
+      <div
+        className="absolute left-1/2 top-2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-white text-sidebar shadow-md"
+        style={{ animation: "float 6s ease-in-out infinite", animationDelay: "0.8s" }}
+      >
         <BadgeA className="h-5 w-5" />
       </div>
-      <div className="absolute bottom-28 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-white text-sidebar shadow-md">
+      <div
+        className="absolute bottom-28 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-white text-sidebar shadow-md"
+        style={{ animation: "float 5.5s ease-in-out infinite", animationDelay: "1.2s" }}
+      >
         <BadgeB className="h-5 w-5" />
       </div>
 
@@ -53,7 +65,10 @@ export function HeroIllustration({
         <div className="flex items-center justify-between text-xs font-medium text-white/70">
           <span>{trackingLabel}</span>
           <span className="flex items-center gap-1.5 text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+            </span>
             Live
           </span>
         </div>

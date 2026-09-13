@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { deliveryTypes } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -16,30 +17,31 @@ export function DeliveryTypes() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {deliveryTypes.map((type) => (
-            <div
-              key={type.name}
-              className={cn(
-                "rounded-xl border p-6",
-                type.featured ? "border-primary bg-surface shadow-md" : "border-border bg-surface"
-              )}
-            >
-              {type.featured ? (
-                <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-                  Priority
-                </span>
-              ) : null}
-              <h3 className="mt-3 text-xl font-bold text-text">{type.name}</h3>
-              <p className="mt-2 text-sm text-text-muted">{type.description}</p>
-              <ul className="mt-4 space-y-2">
-                {type.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-sm text-text">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" aria-hidden />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {deliveryTypes.map((type, i) => (
+            <Reveal key={type.name} delay={i * 100}>
+              <div
+                className={cn(
+                  "rounded-xl border p-6 transition-all hover:-translate-y-1 hover:shadow-lg",
+                  type.featured ? "border-primary bg-surface shadow-md" : "border-border bg-surface"
+                )}
+              >
+                {type.featured ? (
+                  <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                    Priority
+                  </span>
+                ) : null}
+                <h3 className="mt-3 text-xl font-bold text-text">{type.name}</h3>
+                <p className="mt-2 text-sm text-text-muted">{type.description}</p>
+                <ul className="mt-4 space-y-2">
+                  {type.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-text">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" aria-hidden />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

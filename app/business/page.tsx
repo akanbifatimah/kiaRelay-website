@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "For Business",
   description:
     "Company accounts with invoiced billing, multi-branch access, spend reporting, and industry-specific handling — built for procurement and operations teams.",
+  alternates: { canonical: "/business" },
 };
 
 export default function BusinessPage() {

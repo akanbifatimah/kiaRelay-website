@@ -1,4 +1,5 @@
 import { ClipboardList, UsersRound, MapPinned, PackageCheck, type LucideIcon } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { howItWorks } from "@/lib/content";
 
 const icons: Record<string, LucideIcon> = {
@@ -23,18 +24,17 @@ export function HowItWorks() {
         </div>
 
         <ol className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {howItWorks.map((item) => {
+          {howItWorks.map((item, i) => {
             const Icon = icons[item.icon];
             return (
-              <li
-                key={item.step}
-                className="rounded-xl border border-border bg-surface p-6"
-              >
-                <span className="text-sm font-semibold text-primary">{item.step}</span>
-                <Icon className="mt-3 h-8 w-8 text-primary" aria-hidden />
-                <h3 className="mt-4 text-lg font-semibold text-text">{item.title}</h3>
-                <p className="mt-2 text-sm text-text-muted">{item.description}</p>
-              </li>
+              <Reveal key={item.step} delay={i * 100}>
+                <li className="rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
+                  <span className="text-sm font-semibold text-primary">{item.step}</span>
+                  <Icon className="mt-3 h-8 w-8 text-primary" aria-hidden />
+                  <h3 className="mt-4 text-lg font-semibold text-text">{item.title}</h3>
+                  <p className="mt-2 text-sm text-text-muted">{item.description}</p>
+                </li>
+              </Reveal>
             );
           })}
         </ol>

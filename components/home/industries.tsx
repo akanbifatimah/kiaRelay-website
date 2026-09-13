@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { IndustryCard } from "@/components/industry-card";
+import { Reveal } from "@/components/reveal";
 import { industries } from "@/lib/content";
 
 export function Industries() {
@@ -25,8 +26,10 @@ export function Industries() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {industries.map((industry) => (
-            <IndustryCard key={industry.slug} {...industry} />
+          {industries.map((industry, i) => (
+            <Reveal key={industry.slug} delay={i * 80}>
+              <IndustryCard {...industry} />
+            </Reveal>
           ))}
         </div>
       </div>

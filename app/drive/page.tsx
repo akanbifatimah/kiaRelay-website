@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Drive with KiaRelay",
   description:
     "Earn on your schedule with a wallet credited immediately after every delivery. Apply to drive across Texas and Louisiana.",
+  alternates: { canonical: "/drive" },
 };
 
 export default function DrivePage() {

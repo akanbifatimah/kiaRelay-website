@@ -1,3 +1,7 @@
+// TODO: swap for the real production domain once deployed.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kiarelay.com";
+
 // TODO: point at the real KiaRelay web app (staging and/or production) once confirmed.
 export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ?? "https://app.kiarelay.com";

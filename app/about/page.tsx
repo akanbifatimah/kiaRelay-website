@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "KiaRelay's mission is the safe, fast, and accurate movement of materials and goods across Texas, Louisiana, and neighboring states.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

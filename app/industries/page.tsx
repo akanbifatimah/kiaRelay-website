@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Industries",
   description:
     "Specialized handling for refineries and oil/gas, construction, healthcare, and general commercial shippers across Texas and Louisiana.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function IndustriesPage() {
