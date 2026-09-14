@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Wallet } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
-import { PlaceholderPhoto } from "@/components/placeholder-photo";
 import { ContactChannelCard } from "@/components/contact-channel-card";
-import { driverEarnings, driverRequirements, driverApplicationSteps } from "@/lib/content";
+import { Faq } from "@/components/faq";
+import { driverEarnings, driverRequirements, driverApplicationSteps, driverFaqs } from "@/lib/content";
 import { contactChannels } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -46,17 +46,7 @@ export default function DrivePage() {
         </div>
       </section>
 
-      <section className="bg-surface py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <PlaceholderPhoto
-            seed="kiarelay-driver"
-            alt="Representative photography of a KiaRelay driver"
-            className="aspect-21/9 w-full"
-          />
-        </div>
-      </section>
-
-      <section id="requirements" className="scroll-mt-16 bg-surface pb-20 sm:pb-24">
+      <section id="requirements" className="scroll-mt-16 bg-surface py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl">
@@ -74,6 +64,19 @@ export default function DrivePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="bg-bg py-20 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+              FAQ
+            </h2>
+          </div>
+          <div className="mt-10">
+            <Faq items={driverFaqs} />
+          </div>
         </div>
       </section>
 

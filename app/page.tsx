@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/home/how-it-works";
 import { Industries } from "@/components/home/industries";
 import { DeliveryTypes } from "@/components/home/delivery-types";
 import { ServiceArea } from "@/components/home/service-area";
+import { FaqSection } from "@/components/home/faq-section";
 import { SplitCta } from "@/components/home/split-cta";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function Home() {
       <Industries />
       <DeliveryTypes />
       <ServiceArea />
+      <FaqSection />
       <SplitCta />
     </>
   );

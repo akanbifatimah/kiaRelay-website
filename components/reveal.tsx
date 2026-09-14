@@ -26,20 +26,34 @@ export function Reveal({ children, delay = 0, direction = "up" }: RevealProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const reveal = () => setVisible(true);
     const node = ref.current;
-    if (!node) return;
+
+    // Safety net: content must never be stuck permanently hidden — if the
+    // ref never attaches, IntersectionObserver isn't supported, or the
+    // observer simply never fires, force it visible after a short delay.
+    const fallback = window.setTimeout(reveal, 900);
+
+    if (!node || typeof IntersectionObserver === "undefined") {
+      reveal();
+      return () => window.clearTimeout(fallback);
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          reveal();
           observer.disconnect();
         }
       },
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
     );
     observer.observe(node);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   if (!isValidElement(children)) return children;

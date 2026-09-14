@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { FeatureGrid } from "@/components/feature-grid";
-import { PlaceholderPhoto } from "@/components/placeholder-photo";
 import { ContactChannelCard } from "@/components/contact-channel-card";
-import { businessFeatures, industries, businessVolumeOptions } from "@/lib/content";
+import { Faq } from "@/components/faq";
+import { businessFeatures, industries, businessVolumeOptions, businessFaqs } from "@/lib/content";
 import { contactChannels } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -26,17 +26,7 @@ export default function BusinessPage() {
         secondaryCta={{ label: "See Industries We Serve", href: "/industries" }}
       />
 
-      <section className="bg-bg py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <PlaceholderPhoto
-            seed="kiarelay-business"
-            alt="Representative photography of KiaRelay business shipments"
-            className="aspect-21/9 w-full"
-          />
-        </div>
-      </section>
-
-      <section className="bg-bg pb-20 sm:pb-24">
+      <section className="bg-bg py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl">
@@ -79,6 +69,19 @@ export default function BusinessPage() {
                 />
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-bg py-20 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+              FAQ
+            </h2>
+          </div>
+          <div className="mt-10">
+            <Faq items={businessFaqs} />
           </div>
         </div>
       </section>

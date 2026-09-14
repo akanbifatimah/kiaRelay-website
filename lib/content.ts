@@ -39,7 +39,6 @@ export const industries = [
     name: "Refineries & Oil/Gas",
     need: "Hazmat-aware handling and load integrity for pipe fittings, valves, seals, and testing equipment.",
     icon: Flame,
-    imageSeed: "kiarelay-oil-gas",
     materials: [
       "Pipe fittings and valves",
       "Seals and gaskets",
@@ -55,7 +54,6 @@ export const industries = [
     name: "Construction",
     need: "Large-format packaging and dimension-based pricing for materials, tools, and structural components.",
     icon: HardHat,
-    imageSeed: "kiarelay-construction",
     materials: [
       "Building materials",
       "Power and hand tools",
@@ -71,7 +69,6 @@ export const industries = [
     name: "Healthcare",
     need: "Chain-of-custody and cold-chain awareness for medical supplies, specimens, and pharmaceuticals.",
     icon: Cross,
-    imageSeed: "kiarelay-healthcare",
     materials: [
       "Medical supplies and equipment",
       "Lab specimens",
@@ -87,7 +84,6 @@ export const industries = [
     name: "General Commercial",
     need: "Fast, trackable delivery with proof of delivery for documents, packages, and retail goods.",
     icon: Briefcase,
-    imageSeed: "kiarelay-commercial",
     materials: [
       "Business documents",
       "Retail goods and inventory",
@@ -197,7 +193,7 @@ export const heroSlides = [
     headline: "Ship it right,",
     highlight: "the first time.",
     description:
-      "Company accounts, compliance-aware handling, and real-time visibility for refineries, construction, healthcare, and commercial shippers across Texas and Louisiana.",
+      "One company account, industry-trained drivers, and a live tracking link on every shipment — trusted by refineries, contractors, hospitals, and commercial shippers across Texas and Louisiana.",
     primaryCta: { label: "Get a Quote", href: "/business#quote" },
     secondaryCta: { label: "Explore Business Accounts", href: "/business" },
     trackingLabel: "KR-48213 · In Transit",
@@ -402,4 +398,172 @@ export const contactRoutingOptions = [
   { value: "business", label: "Business inquiry" },
   { value: "driver", label: "Driver inquiry" },
   { value: "support", label: "Support" },
+] as const;
+
+// ---------------------------------------------------------------------------
+// FAQs
+// ---------------------------------------------------------------------------
+
+export const homeFaqs = [
+  {
+    question: "Where does KiaRelay operate?",
+    answer:
+      "Texas and Louisiana today, with a phased expansion into Arkansas, Oklahoma, Mississippi, and New Mexico as the network grows.",
+  },
+  {
+    question: "What's the difference between Standard, Express, and Scheduled delivery?",
+    answer:
+      "Standard is reliable, cost-effective delivery for shipments that aren't racing the clock. Express is priority dispatch and routing for shipments that need to move now. Scheduled lets you pick a specific date and time window for pickup and drop-off.",
+  },
+  {
+    question: "Are KiaRelay drivers vetted?",
+    answer:
+      "Every driver is background-checked before being matched to a delivery, and drivers can carry optional TWIC or HazMat endorsements for restricted-site and regulated freight.",
+  },
+  {
+    question: "How much does Express cost?",
+    answer:
+      "Express pricing depends on distance, weight, and urgency — contact us for a custom rate.",
+  },
+  {
+    question: "Can I track my delivery in real time?",
+    answer:
+      "Yes. Every delivery includes real-time tracking with a shareable link, plus photo-and-signature confirmation once it's dropped off.",
+  },
+  {
+    question: "Do you handle hazmat or medical shipments?",
+    answer:
+      "Yes — hazmat-aware handling for refinery and oil/gas shipments, and HIPAA-aware, cold-chain-aware handling for healthcare shipments.",
+  },
+] as const;
+
+export const businessFaqs = [
+  {
+    question: "How does billing work for company accounts?",
+    answer:
+      "An invoice is sent immediately after each delivery, settled by ACH or card. There's no prepayment required.",
+  },
+  {
+    question: "Can multiple people on my team book deliveries?",
+    answer:
+      "Yes. Company accounts support multiple authorized users across branches, all under one account with shared visibility into shipments.",
+  },
+  {
+    question: "Do you handle hazmat, cold-chain, or oversized freight?",
+    answer:
+      "Yes — handling is matched to your industry, including hazmat awareness for oil/gas, cold-chain awareness for healthcare, and dimensional pricing for large-format construction materials.",
+  },
+  {
+    question: "How is pricing determined?",
+    answer:
+      "Pricing is based on weight, dimensions, and delivery type. Contact sales with your estimated monthly volume for a custom rate.",
+  },
+  {
+    question: "Is there a minimum shipment volume to open a company account?",
+    answer:
+      "There's no stated minimum — reach out to sales with your estimated volume and we'll get you set up.",
+  },
+  {
+    question: "Do you provide spend or usage reporting?",
+    answer:
+      "Yes. Company accounts include spend and usage reporting broken down by branch, user, or date range.",
+  },
+] as const;
+
+export const personalFaqs = [
+  {
+    question: "Do I need an account to get a price?",
+    answer: "No — pricing is shown up front before you book, no account required.",
+  },
+  {
+    question: "How do I pay?",
+    answer:
+      "Individual bookings are paid at the time of booking by card, debit, ACH, Apple Pay, Google Pay, or PayPal.",
+  },
+  {
+    question: "Can I track my delivery?",
+    answer:
+      "Yes — every delivery includes a real-time, shareable tracking link so you (or whoever's waiting) can follow it live.",
+  },
+  {
+    question: "How is delivery confirmed?",
+    answer:
+      "Every delivery is confirmed with a photo and signature at drop-off, so you know exactly when and how it arrived.",
+  },
+  {
+    question: "When will individual booking be available?",
+    answer:
+      "Web booking is on the way. Email us and we'll let you know the moment you can book a delivery in your area.",
+  },
+  {
+    question: "What can I send?",
+    answer: "Personal parcels, online purchases, and personal effects — sent door to door.",
+  },
+] as const;
+
+export const driverFaqs = [
+  {
+    question: "What do I need to start driving?",
+    answer:
+      "A valid driver's license, a roadworthy vehicle, and a completed background check. TWIC and HazMat endorsements are optional but open up more delivery opportunities.",
+  },
+  {
+    question: "How fast do I get paid?",
+    answer:
+      "Your wallet is credited immediately after every delivery. Cash out end of day, weekly, bi-weekly, or on demand.",
+  },
+  {
+    question: "Do I need a specific type of vehicle?",
+    answer:
+      "It depends on the job — cars, cargo vans, box trucks, and pickup trucks are all eligible vehicle types.",
+  },
+  {
+    question: "How long does the background check take?",
+    answer:
+      "Background checks are processed as part of onboarding after you submit your application — our driver recruiting team will follow up with next steps.",
+  },
+  {
+    question: "Can I drive part-time?",
+    answer: "Yes — KiaRelay drivers work on their own schedule.",
+  },
+  {
+    question: "Do TWIC or HazMat endorsements help?",
+    answer:
+      "Yes — they qualify you for additional refinery, oil and gas, and other regulated-freight delivery opportunities.",
+  },
+] as const;
+
+export const industryFaqs = [
+  {
+    question: "How is pricing determined for this industry?",
+    answer:
+      "Pricing reflects the handling your shipment requires — weight and hazmat class for oil/gas, dimensions for construction, and cold-chain/chain-of-custody requirements for healthcare. Contact sales for a custom rate.",
+  },
+  {
+    question: "Are drivers trained for this type of shipment?",
+    answer:
+      "Yes — drivers are background-checked and briefed on the site-access, handling, and compliance requirements specific to each industry before pickup.",
+  },
+  {
+    question: "Can this be a recurring or scheduled shipment?",
+    answer:
+      "Yes — Scheduled delivery lets you set a recurring date and time window, useful for regular jobsite, facility, or business shipments.",
+  },
+] as const;
+
+export const trackFaqs = [
+  {
+    question: "What do the tracking statuses mean?",
+    answer:
+      "Order Placed means the request has been submitted. Picked Up means a driver has collected the shipment. In Transit means it's on the way. Delivered means it's been dropped off and confirmed with photo and signature.",
+  },
+  {
+    question: "Can I share my tracking link with someone else?",
+    answer: "Yes — tracking links are shareable, so anyone waiting on a delivery can follow it live.",
+  },
+  {
+    question: "What if my tracking number doesn't show a result?",
+    answer:
+      "Double-check the number, or reach out to support — see the Contact page for the right email and phone number.",
+  },
 ] as const;

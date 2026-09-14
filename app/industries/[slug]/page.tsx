@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CircleCheckBig } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
-import { PlaceholderPhoto } from "@/components/placeholder-photo";
-import { industries } from "@/lib/content";
+import { Faq } from "@/components/faq";
+import { industries, industryFaqs } from "@/lib/content";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -47,17 +47,7 @@ export default async function IndustryDetailPage({
         primaryCta={{ label: industry.ctaLabel, href: "/business#quote" }}
       />
 
-      <section className="bg-bg py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <PlaceholderPhoto
-            seed={industry.imageSeed}
-            alt={`Representative photography for ${industry.name} shipments`}
-            className="aspect-21/9 w-full"
-          />
-        </div>
-      </section>
-
-      <section className="bg-bg pb-20 sm:pb-24">
+      <section className="bg-bg py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-text">
@@ -78,6 +68,19 @@ export default async function IndustryDetailPage({
               How we handle it
             </h2>
             <p className="mt-6 text-text-muted">{industry.complianceNeed}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-bg py-20 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+              Common questions
+            </h2>
+          </div>
+          <div className="mt-10">
+            <Faq items={industryFaqs} />
           </div>
         </div>
       </section>

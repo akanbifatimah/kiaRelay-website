@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { HeroIllustration } from "@/components/home/hero-illustration";
 import { heroSlides } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -47,20 +46,6 @@ export function HeroSlider() {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-slate-300">{slide.description}</p>
-
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Button href={slide.primaryCta.href} variant="primary" size="lg" className="w-full sm:w-auto">
-              {slide.primaryCta.label}
-            </Button>
-            <Button
-              href={slide.secondaryCta.href}
-              variant="outline"
-              size="lg"
-              className="w-full border-white/30 text-white hover:bg-white/10 sm:w-auto"
-            >
-              {slide.secondaryCta.label}
-            </Button>
-          </div>
 
           <div className="mt-10 flex items-center gap-4">
             <div className="flex items-center gap-2" role="tablist" aria-label="Hero slides">
