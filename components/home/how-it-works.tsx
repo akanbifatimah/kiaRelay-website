@@ -27,13 +27,16 @@ export function HowItWorks() {
           {howItWorks.map((item, i) => {
             const Icon = icons[item.icon];
             return (
-              <Reveal key={item.step} delay={i * 100}>
-                <li className="rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
-                  <span className="text-sm font-semibold text-primary">{item.step}</span>
-                  <Icon className="mt-3 h-8 w-8 text-primary" aria-hidden />
-                  <h3 className="mt-4 text-lg font-semibold text-text">{item.title}</h3>
-                  <p className="mt-2 text-sm text-text-muted">{item.description}</p>
-                </li>
+              <Reveal
+                key={item.step}
+                as="li"
+                delay={i * 100}
+                className="rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
+              >
+                <span className="text-sm font-semibold text-primary">{item.step}</span>
+                <Icon className="mt-3 h-8 w-8 text-primary" aria-hidden />
+                <h3 className="mt-4 text-lg font-semibold text-text">{item.title}</h3>
+                <p className="mt-2 text-sm text-text-muted">{item.description}</p>
               </Reveal>
             );
           })}

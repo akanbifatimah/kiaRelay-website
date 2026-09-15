@@ -21,8 +21,6 @@ import {
   FileSignature,
   IdCard,
   Wrench,
-  ClipboardList,
-  CircleCheckBig,
   Target,
   FileCheck,
   UserCheck,
@@ -165,8 +163,8 @@ export const splitCtaCards = [
     title: "Ship with KiaRelay",
     description:
       "Company accounts with invoiced billing, multi-branch access, and industry-specific handling.",
-    cta: "Request a Quote",
-    href: "/business#quote",
+    cta: "Download the App",
+    href: "/download",
   },
   {
     eyebrow: "For Individuals",
@@ -194,7 +192,7 @@ export const heroSlides = [
     highlight: "the first time.",
     description:
       "One company account, industry-trained drivers, and a live tracking link on every shipment — trusted by refineries, contractors, hospitals, and commercial shippers across Texas and Louisiana.",
-    primaryCta: { label: "Get a Quote", href: "/business#quote" },
+    primaryCta: { label: "Download the App", href: "/download" },
     secondaryCta: { label: "Explore Business Accounts", href: "/business" },
     trackingLabel: "KR-48213 · In Transit",
     progress: 65,
@@ -209,8 +207,8 @@ export const heroSlides = [
     highlight: "watch it move.",
     description:
       "Transparent pricing, real-time tracking with a shareable link, and photo-and-signature confirmation on every delivery.",
-    primaryCta: { label: "Track a Package", href: "/track" },
-    secondaryCta: { label: "Send a Package", href: "/personal" },
+    primaryCta: { label: "Send a Package", href: "/personal" },
+    secondaryCta: { label: "Contact Us", href: "/contact" },
     trackingLabel: "KR-90142 · Out for Delivery",
     progress: 85,
     fromIcon: HomeIcon,
@@ -332,17 +330,6 @@ export const driverApplicationSteps = [
   { step: "02", title: "Documents", description: "License and vehicle documentation upload." },
   { step: "03", title: "Vehicle info", description: "Vehicle type, year, and capacity." },
   { step: "04", title: "Background check consent", description: "Authorize your background check to finish onboarding." },
-] as const;
-
-// ---------------------------------------------------------------------------
-// /track
-// ---------------------------------------------------------------------------
-
-export const trackingTimeline = [
-  { label: "Order Placed", icon: ClipboardList },
-  { label: "Picked Up", icon: PackageCheck },
-  { label: "In Transit", icon: Truck },
-  { label: "Delivered", icon: CircleCheckBig },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -551,19 +538,3 @@ export const industryFaqs = [
   },
 ] as const;
 
-export const trackFaqs = [
-  {
-    question: "What do the tracking statuses mean?",
-    answer:
-      "Order Placed means the request has been submitted. Picked Up means a driver has collected the shipment. In Transit means it's on the way. Delivered means it's been dropped off and confirmed with photo and signature.",
-  },
-  {
-    question: "Can I share my tracking link with someone else?",
-    answer: "Yes — tracking links are shareable, so anyone waiting on a delivery can follow it live.",
-  },
-  {
-    question: "What if my tracking number doesn't show a result?",
-    answer:
-      "Double-check the number, or reach out to support — see the Contact page for the right email and phone number.",
-  },
-] as const;

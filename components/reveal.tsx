@@ -1,7 +1,7 @@
 "use client";
 
-import { cloneElement, isValidElement, useEffect, useRef, useState } from "react";
-import type { CSSProperties, ReactElement } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type Direction = "up" | "left" | "right";
@@ -13,15 +13,19 @@ const hiddenByDirection: Record<Direction, string> = {
 };
 
 interface RevealProps {
-  children: ReactElement<{ className?: string; style?: CSSProperties }>;
+  children: ReactNode;
   delay?: number;
   direction?: Direction;
+  as?: "div" | "li";
+  className?: string;
 }
 
-// Fades/slides an element into place the first time it enters the viewport.
-// Clones the child instead of wrapping it so it can be dropped onto list
-// items (li, tr, etc.) without breaking parent content-model rules.
-export function Reveal({ children, delay = 0, direction = "up" }: RevealProps) {
+// Fades/slides its own wrapper element into place the first time it enters
+// the viewport. Renders the element itself (via `as`) rather than cloning a
+// server-rendered child — children crossing the Server/Client Component
+// boundary are serialized, and cloneElement onto them doesn't reliably
+// survive hydration (see the hydration-mismatch note in Reveal's history).
+export function Reveal({ children, delay = 0, direction = "up", as: Tag = "div", className }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -56,19 +60,17 @@ export function Reveal({ children, delay = 0, direction = "up" }: RevealProps) {
     };
   }, []);
 
-  if (!isValidElement(children)) return children;
-
-  // cloneElement only forwards this ref descriptor for React to attach to
-  // the DOM node after commit — it never reads ref.current during render —
-  // but the lint rule can't verify that for an arbitrary function call.
-  // eslint-disable-next-line react-hooks/refs
-  return cloneElement(children, {
-    ref,
-    style: { ...children.props.style, transitionDelay: `${delay}ms` },
-    className: cn(
-      "transition-all duration-700 ease-out",
-      visible ? "opacity-100 translate-x-0 translate-y-0" : hiddenByDirection[direction],
-      children.props.className
-    ),
-  } as Partial<unknown> & { ref: typeof ref });
+  return (
+    <Tag
+      ref={ref as never}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "transition-all duration-700 ease-out",
+        visible ? "opacity-100 translate-x-0 translate-y-0" : hiddenByDirection[direction],
+        className
+      )}
+    >
+      {children}
+    </Tag>
+  );
 }

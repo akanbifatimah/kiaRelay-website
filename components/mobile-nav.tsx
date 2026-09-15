@@ -118,8 +118,8 @@ export function MobileNav() {
             <Button href={SIGNUP_URL} variant="primary" className="w-full">
               Sign Up
             </Button>
-            <Button href="/business#quote" variant="primary" className="w-full">
-              Get a Quote
+            <Button href="/download" variant="primary" className="w-full">
+              Download the App
             </Button>
           </div>
         </div>

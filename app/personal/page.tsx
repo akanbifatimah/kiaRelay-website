@@ -20,7 +20,6 @@ export default function PersonalPage() {
         title="Send a package without the runaround."
         description="Book a delivery in minutes, see the price up front, and track it in real time — from your door to theirs."
         primaryCta={{ label: "Get Early Access", href: `mailto:${contactChannels.individual.email}` }}
-        secondaryCta={{ label: "Track a Package", href: "/track" }}
       />
 
       <section className="bg-bg py-20 sm:py-24">

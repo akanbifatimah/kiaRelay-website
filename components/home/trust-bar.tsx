@@ -18,11 +18,14 @@ export function TrustBar() {
           {trustSignals.map((signal, i) => {
             const Icon = icons[signal.icon];
             return (
-              <Reveal key={signal.label} delay={i * 60}>
-                <li className="flex items-center gap-2 text-sm font-medium text-text-muted transition-colors hover:text-text">
-                  <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  {signal.label}
-                </li>
+              <Reveal
+                key={signal.label}
+                as="li"
+                delay={i * 60}
+                className="flex items-center gap-2 text-sm font-medium text-text-muted transition-colors hover:text-text"
+              >
+                <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+                {signal.label}
               </Reveal>
             );
           })}

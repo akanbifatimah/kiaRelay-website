@@ -25,11 +25,6 @@ export default function ContactPage() {
               <ContactChannelCard key={channel.label} {...channel} />
             ))}
           </div>
-
-          {/* TODO: replace with a real office address once provided. */}
-          <p className="mt-8 text-center text-sm text-text-muted">
-            Office address coming soon.
-          </p>
         </div>
       </section>
     </>

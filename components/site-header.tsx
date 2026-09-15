@@ -33,8 +33,8 @@ export function SiteHeader() {
           <Button href={SIGNUP_URL} variant="primary" size="md">
             Sign Up
           </Button>
-          <Button href="/business#quote" variant="primary" size="md" className="hidden xl:inline-flex">
-            Get a Quote
+          <Button href="/download" variant="primary" size="md">
+            Download the App
           </Button>
         </div>
 

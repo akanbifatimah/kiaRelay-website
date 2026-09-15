@@ -11,6 +11,10 @@ export const LOGIN_URL = `${APP_URL}/login`;
 // if not, point "Sign Up" at the quote/waitlist flow instead.
 export const SIGNUP_URL = `${APP_URL}/signup`;
 
+// TODO: swap for the real App Store / Google Play listings once the app is published.
+export const APP_STORE_URL = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "#";
+export const PLAY_STORE_URL = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? "#";
+
 export const servicesMenu = {
   label: "Services",
   items: [
@@ -24,13 +28,18 @@ export const servicesMenu = {
       href: "/personal",
       description: "Book a delivery and track it in real time.",
     },
+    {
+      label: "Drive with KiaRelay",
+      href: "/drive",
+      description: "Earn on your schedule with a wallet credited after every delivery.",
+    },
   ],
 } as const;
 
 export const primaryNavLinks = [
   { label: "Industries", href: "/industries" },
-  { label: "Drive", href: "/drive" },
-  { label: "Track", href: "/track" },
+  { label: "About", href: "/about" },
+  { label: "FAQ", href: "/faq" },
 ] as const;
 
 export const footerSitemap = [
@@ -38,6 +47,7 @@ export const footerSitemap = [
     heading: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -46,15 +56,12 @@ export const footerSitemap = [
     links: [
       { label: "Business Accounts", href: "/business" },
       { label: "Industries We Serve", href: "/industries" },
-      { label: "Get a Quote", href: "/business#quote" },
+      { label: "Download the App", href: "/download" },
     ],
   },
   {
     heading: "For Individuals",
-    links: [
-      { label: "Send a Package", href: "/personal" },
-      { label: "Track a Shipment", href: "/track" },
-    ],
+    links: [{ label: "Send a Package", href: "/personal" }],
   },
   {
     heading: "Drivers",

@@ -50,12 +50,17 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>DOT-aware &middot; Background-checked drivers &middot; Insured shipments</p>
-          <p>&copy; {year} KiaRelay. All rights reserved.</p>
+          <p suppressHydrationWarning>&copy; {year} KiaRelay. All rights reserved.</p>
         </div>
 
-        {/* TODO: replace with real office phone/email/address once provided. */}
         <p className="mt-4 text-xs text-slate-500">
-          Contact details coming soon — placeholder footer, pending real business info.
+          <a href="tel:+112908902" className="hover:text-white">
+            +1 12908902
+          </a>{" "}
+          &middot;{" "}
+          <a href="mailto:support@kiarelay.com" className="hover:text-white">
+            support@kiarelay.com
+          </a>
         </p>
       </div>
     </footer>
