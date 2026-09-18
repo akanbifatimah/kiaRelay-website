@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { CircleCheckBig } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Faq } from "@/components/faq";
+import { JsonLd } from "@/components/json-ld";
 import { industries, industryFaqs } from "@/lib/content";
+import { pageMetadata, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -22,11 +24,11 @@ export async function generateMetadata({
   const industry = getIndustry(slug);
   if (!industry) return {};
 
-  return {
+  return pageMetadata({
     title: industry.name,
     description: industry.complianceNeed,
-    alternates: { canonical: `/industries/${slug}` },
-  };
+    path: `/industries/${slug}`,
+  });
 }
 
 export default async function IndustryDetailPage({
@@ -40,6 +42,14 @@ export default async function IndustryDetailPage({
 
   return (
     <>
+      <JsonLd data={faqJsonLd(industryFaqs)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Industries", path: "/industries" },
+          { name: industry.name, path: `/industries/${slug}` },
+        ])}
+      />
       <PageHero
         eyebrow="Industries"
         title={industry.name}

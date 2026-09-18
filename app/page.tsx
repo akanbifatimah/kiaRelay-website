@@ -7,6 +7,9 @@ import { DeliveryTypes } from "@/components/home/delivery-types";
 import { ServiceArea } from "@/components/home/service-area";
 import { FaqSection } from "@/components/home/faq-section";
 import { SplitCta } from "@/components/home/split-cta";
+import { JsonLd } from "@/components/json-ld";
+import { homeFaqs } from "@/lib/content";
+import { faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -15,6 +18,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqJsonLd(homeFaqs)} />
       <Hero />
       <TrustBar />
       <HowItWorks />

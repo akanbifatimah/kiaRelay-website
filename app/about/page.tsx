@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { FeatureGrid } from "@/components/feature-grid";
 import { missionPillars, whyKiaRelay } from "@/lib/content";
 import { serviceAreaStates } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description:
     "KiaRelay's mission is the safe, fast, and accurate movement of materials and goods across Texas, Louisiana, and neighboring states.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

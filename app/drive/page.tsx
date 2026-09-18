@@ -1,21 +1,23 @@
-import type { Metadata } from "next";
 import { Wallet } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { ContactChannelCard } from "@/components/contact-channel-card";
 import { Faq } from "@/components/faq";
+import { JsonLd } from "@/components/json-ld";
 import { driverEarnings, driverRequirements, driverApplicationSteps, driverFaqs } from "@/lib/content";
 import { contactChannels } from "@/lib/site-config";
+import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Drive with KiaRelay",
   description:
     "Earn on your schedule with a wallet credited immediately after every delivery. Apply to drive across Texas and Louisiana.",
-  alternates: { canonical: "/drive" },
-};
+  path: "/drive",
+});
 
 export default function DrivePage() {
   return (
     <>
+      <JsonLd data={faqJsonLd(driverFaqs)} />
       <PageHero
         eyebrow="Drive with KiaRelay"
         title="Deliver on your schedule. Get paid on yours."

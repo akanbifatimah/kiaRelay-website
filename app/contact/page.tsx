@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { ContactChannelCard } from "@/components/contact-channel-card";
 import { contactChannels } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description: "Reach KiaRelay for business inquiries, driver questions, or support.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

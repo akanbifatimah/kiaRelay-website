@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { Smartphone, MapPinned, Wallet, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Button } from "@/components/ui/button";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Download the App",
   description:
     "Get the KiaRelay app to book a delivery, track it in real time, and manage business shipments from your phone.",
-  alternates: { canonical: "/download" },
-};
+  path: "/download",
+});
 
 const appHighlights = [
   {

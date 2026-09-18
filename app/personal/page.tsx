@@ -1,20 +1,22 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Faq } from "@/components/faq";
+import { JsonLd } from "@/components/json-ld";
 import { personalFeatures, personalFaqs } from "@/lib/content";
 import { contactChannels } from "@/lib/site-config";
+import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "For Individuals",
   description:
     "Book a delivery, get a transparent price, and track it in real time with a shareable link — photo and signature confirmation on every drop-off.",
-  alternates: { canonical: "/personal" },
-};
+  path: "/personal",
+});
 
 export default function PersonalPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd(personalFaqs)} />
       <PageHero
         eyebrow="For Individuals"
         title="Send a package without the runaround."

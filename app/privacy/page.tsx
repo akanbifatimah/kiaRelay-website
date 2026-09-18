@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description: "How KiaRelay collects, uses, and protects information.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

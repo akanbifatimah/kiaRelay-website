@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { Faq } from "@/components/faq";
+import { JsonLd } from "@/components/json-ld";
 import { homeFaqs, businessFaqs, personalFaqs, driverFaqs } from "@/lib/content";
+import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "FAQ",
   description: "Answers to common questions about shipping, business accounts, and driving with KiaRelay.",
-  alternates: { canonical: "/faq" },
-};
+  path: "/faq",
+});
 
 const faqGroups = [
   { heading: "General", items: homeFaqs },
@@ -19,6 +20,7 @@ const faqGroups = [
 export default function FaqPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd([...homeFaqs, ...businessFaqs, ...personalFaqs, ...driverFaqs])} />
       <PageHero
         eyebrow="FAQ"
         title="Frequently asked questions."

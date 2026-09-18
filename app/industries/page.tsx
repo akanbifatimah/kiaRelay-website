@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { IndustryCard } from "@/components/industry-card";
 import { industries } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Industries",
   description:
     "Specialized handling for refineries and oil/gas, construction, healthcare, and general commercial shippers across Texas and Louisiana.",
-  alternates: { canonical: "/industries" },
-};
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   return (

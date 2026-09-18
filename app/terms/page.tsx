@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Service",
   description: "The terms governing use of KiaRelay's website and delivery services.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

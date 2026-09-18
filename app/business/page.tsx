@@ -1,23 +1,25 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { FeatureGrid } from "@/components/feature-grid";
 import { ContactChannelCard } from "@/components/contact-channel-card";
 import { Faq } from "@/components/faq";
+import { JsonLd } from "@/components/json-ld";
 import { businessFeatures, industries, businessVolumeOptions, businessFaqs } from "@/lib/content";
 import { contactChannels } from "@/lib/site-config";
+import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "For Business",
   description:
     "Company accounts with invoiced billing, multi-branch access, spend reporting, and industry-specific handling — built for procurement and operations teams.",
-  alternates: { canonical: "/business" },
-};
+  path: "/business",
+});
 
 export default function BusinessPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd(businessFaqs)} />
       <PageHero
         eyebrow="For Business"
         title="Delivery logistics built for how procurement actually works."
