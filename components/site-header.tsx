@@ -4,7 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/mobile-nav";
 import { NavDropdown } from "@/components/nav-dropdown";
 import { Button } from "@/components/ui/button";
-import { LOGIN_URL, SIGNUP_URL, primaryNavLinks, servicesMenu } from "@/lib/site-config";
+import { primaryNavLinks, servicesMenu } from "@/lib/site-config";
 
 export function SiteHeader() {
   return (
@@ -26,15 +26,11 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          {/* No Log In / Sign Up: customers and drivers sign in inside the
+              KiaRelay mobile apps; the web app is staff-only. */}
           <ThemeToggle />
-          <Button href={LOGIN_URL} variant="outline" size="md">
-            Log In
-          </Button>
-          <Button href={SIGNUP_URL} variant="primary" size="md">
-            Sign Up
-          </Button>
           <Button href="/download" variant="primary" size="md">
-            Download the App
+            Get the App
           </Button>
         </div>
 

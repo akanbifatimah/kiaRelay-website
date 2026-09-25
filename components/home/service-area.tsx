@@ -17,7 +17,7 @@ export function ServiceArea() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-bg p-6">
             <dt className="text-sm font-semibold uppercase tracking-wide text-primary">
               Primary service area
@@ -34,7 +34,7 @@ export function ServiceArea() {
               {serviceAreaStates.expanding.join(" · ")}
             </dd>
           </div>
-        </div>
+        </dl>
       </div>
     </section>
   );

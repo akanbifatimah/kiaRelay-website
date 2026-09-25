@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "delivery logistics",
     "Texas courier",
     "Louisiana courier",
-    "same-day delivery",
+    "express delivery",
     "freight delivery",
     "specialized shipping",
     "hazmat delivery",

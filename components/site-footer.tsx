@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
-import { footerSitemap, serviceAreaStates } from "@/lib/site-config";
+import { COMPANY_ADDRESS, PHONE, contactChannels, footerSitemap, serviceAreaStates } from "@/lib/site-config";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -49,18 +49,19 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>DOT-aware &middot; Background-checked drivers &middot; Insured shipments</p>
+          <p>Background-checked drivers &middot; Real-time tracking &middot; Photo proof of delivery</p>
           <p suppressHydrationWarning>&copy; {year} KiaRelay. All rights reserved.</p>
         </div>
 
         <p className="mt-4 text-xs text-slate-500">
-          <a href="tel:+112908902" className="hover:text-white">
-            +1 12908902
+          <a href={`tel:${PHONE.tel}`} className="hover:text-white">
+            {PHONE.display}
           </a>{" "}
           &middot;{" "}
-          <a href="mailto:support@kiarelay.com" className="hover:text-white">
-            support@kiarelay.com
+          <a href={`mailto:${contactChannels.support.email}`} className="hover:text-white">
+            {contactChannels.support.email}
           </a>
+          {COMPANY_ADDRESS && <> &middot; {COMPANY_ADDRESS}</>}
         </p>
       </div>
     </footer>

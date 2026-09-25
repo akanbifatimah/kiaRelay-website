@@ -29,6 +29,8 @@ import {
   HardHat,
   Cross,
   Briefcase,
+  Route,
+  Zap,
 } from "lucide-react";
 
 export const industries = [
@@ -86,10 +88,10 @@ export const industries = [
       "Business documents",
       "Retail goods and inventory",
       "General packages",
-      "Recurring B2B shipments",
+      "Scheduled B2B shipments",
     ],
     complianceNeed:
-      "Commercial shipments are optimized for speed and accountability — real-time tracking and proof of delivery on every run, with recurring/scheduled options for repeat business shipments.",
+      "Commercial shipments are optimized for speed and accountability — real-time tracking and photo proof of delivery on every run, with Scheduled delivery (booked up to 14 days ahead) for planned business shipments.",
     ctaLabel: "Talk to Sales About Commercial Shipping",
   },
 ] as const;
@@ -99,7 +101,7 @@ export const howItWorks = [
     step: "01",
     title: "Request",
     description:
-      "Submit a delivery request online — one-time or scheduled, business or personal.",
+      "Book a delivery in the KiaRelay app — now, or scheduled up to 14 days ahead. The full price is shown before you confirm.",
     icon: "ClipboardList",
   },
   {
@@ -113,14 +115,14 @@ export const howItWorks = [
     step: "03",
     title: "Track",
     description:
-      "Follow the shipment in real time with a shareable tracking link from pickup to drop-off.",
+      "Follow the shipment live in the app, from pickup to drop-off.",
     icon: "MapPinned",
   },
   {
     step: "04",
     title: "Deliver",
     description:
-      "Delivery is confirmed with photo and signature — proof of delivery, every time.",
+      "Delivery is confirmed with a drop-off photo and the recipient's signature or PIN — proof of delivery, every time.",
     icon: "PackageCheck",
   },
 ] as const;
@@ -130,30 +132,33 @@ export const deliveryTypes = [
     name: "Standard",
     description:
       "Reliable, cost-effective delivery for shipments that aren't racing the clock.",
-    points: ["Predictable transit windows", "Weight- and dimension-based pricing", "Full tracking included"],
+    points: ["Priced by weight, dimensions, and distance", "Price shown before you book", "Live tracking included"],
     featured: false,
   },
   {
     name: "Express",
     description:
       "Priority handling and routing when a shipment absolutely has to move now.",
-    points: ["Priority dispatch", "Fastest available routing", "Contact us for a custom rate"],
+    points: ["Priority dispatch", "Fastest available routing", "Express price shown before you book"],
     featured: true,
   },
   {
     name: "Scheduled",
     description:
-      "Pick the date and time window that works for your site, dock, or delivery address.",
-    points: ["Customer-selected time slot", "Ideal for recurring shipments", "Full tracking included"],
+      "Pick the date and time slot that works for your site, dock, or delivery address.",
+    points: ["Book up to 14 days in advance", "Customer-selected time slot", "Live tracking included"],
     featured: false,
   },
 ] as const;
 
 export const trustSignals = [
-  { label: "TWIC-Compliant", icon: "ShieldCheck" },
-  { label: "DOT-Aware", icon: "Truck" },
-  { label: "Fully Insured", icon: "FileCheck" },
+  // Only claims the platform actually enforces (driver vetting, POD, tracking).
+  // TODO: add "Insured" / DOT-MC badges once the client supplies real
+  // coverage details and registration numbers — never invent them.
   { label: "Background-Checked Drivers", icon: "UserCheck" },
+  { label: "ID-Verified Drivers", icon: "ShieldCheck" },
+  { label: "TWIC & HazMat-Endorsed Drivers", icon: "Truck" },
+  { label: "Photo Proof of Delivery", icon: "FileCheck" },
   { label: "Real-Time Tracking", icon: "Radar" },
 ] as const;
 
@@ -163,14 +168,14 @@ export const splitCtaCards = [
     title: "Ship with KiaRelay",
     description:
       "Company accounts with invoiced billing, multi-branch access, and industry-specific handling.",
-    cta: "Download the App",
-    href: "/download",
+    cta: "Explore Business Accounts",
+    href: "/business",
   },
   {
     eyebrow: "For Individuals",
     title: "Send a Package",
     description:
-      "Book a delivery in minutes and track it in real time, door to door.",
+      "Book a door-to-door delivery in the KiaRelay app and track it in real time.",
     cta: "Get Started",
     href: "/personal",
   },
@@ -179,7 +184,7 @@ export const splitCtaCards = [
     title: "Drive with KiaRelay",
     description:
       "Earn on your schedule with a wallet credited immediately after every delivery.",
-    cta: "Apply to Drive",
+    cta: "Drive with Us",
     href: "/drive",
   },
 ] as const;
@@ -191,9 +196,11 @@ export const heroSlides = [
     headline: "Ship it right,",
     highlight: "the first time.",
     description:
-      "One company account, industry-trained drivers, and a live tracking link on every shipment — trusted by refineries, contractors, hospitals, and commercial shippers across Texas and Louisiana.",
-    primaryCta: { label: "Download the App", href: "/download" },
-    secondaryCta: { label: "Explore Business Accounts", href: "/business" },
+      "KiaRelay gives refineries, contractors, healthcare providers, and commercial shippers across Texas and Louisiana one company account for every delivery. Each shipment is handled by a vetted driver who is briefed on your site's requirements, and you can track it live from pickup to drop-off.",
+    // Hero shows this app's store buttons (2026-09-25) instead of CTA buttons.
+    app: "customer",
+    appHint: "Download the KiaRelay app and choose a Business account.",
+    learnMore: { label: "Learn more about business accounts", href: "/business" },
     trackingLabel: "KR-48213 · In Transit",
     progress: 65,
     fromIcon: Factory,
@@ -206,9 +213,10 @@ export const heroSlides = [
     headline: "Book it, send it,",
     highlight: "watch it move.",
     description:
-      "Transparent pricing, real-time tracking with a shareable link, and photo-and-signature confirmation on every delivery.",
-    primaryCta: { label: "Send a Package", href: "/personal" },
-    secondaryCta: { label: "Contact Us", href: "/contact" },
+      "Sending a package with KiaRelay is simple. You see the full price before you book, follow your delivery live in the app, and get a photo at drop-off as proof that it arrived safely.",
+    app: "customer",
+    appHint: "Download the KiaRelay app and choose a Personal account.",
+    learnMore: { label: "See how personal deliveries work", href: "/personal" },
     trackingLabel: "KR-90142 · Out for Delivery",
     progress: 85,
     fromIcon: HomeIcon,
@@ -219,11 +227,12 @@ export const heroSlides = [
     id: "driver",
     eyebrow: "Drive with KiaRelay",
     headline: "Deliver on your schedule,",
-    highlight: "earn the same day.",
+    highlight: "track every dollar.",
     description:
-      "Vehicle-friendly requirements, background-checked onboarding, and a wallet credited immediately after every delivery.",
-    primaryCta: { label: "Apply to Drive", href: "/drive" },
-    secondaryCta: { label: "See Requirements", href: "/drive" },
+      "Sign up in the KiaRelay driver app and choose when you work. Your wallet is credited as soon as each delivery is completed, and you get paid on the payout cycle that suits you.",
+    app: "driver",
+    appHint: "Download the KiaRelay Driver app to sign up.",
+    learnMore: { label: "See driver requirements and pay", href: "/drive" },
     trackingLabel: "Wallet · Credited Today",
     progress: 40,
     fromIcon: Wallet,
@@ -241,7 +250,7 @@ export const businessFeatures = [
     icon: Receipt,
     title: "Invoiced billing",
     description:
-      "An invoice is sent immediately after each delivery. Settle by ACH or card — no prepayment required.",
+      "An invoice is generated automatically once delivery is confirmed. Standard Net 30 terms, settled by ACH, corporate card, or an approved line of credit — no prepayment.",
   },
   {
     icon: Building2,
@@ -283,53 +292,64 @@ export const businessVolumeOptions = [
 export const personalFeatures = [
   {
     icon: MousePointerClick,
-    title: "Book in minutes",
+    title: "Book in the app",
     description:
-      "Enter pickup and drop-off details, pick a delivery type, and confirm — no account required to get a price.",
+      "Create a free account, enter pickup and drop-off, pick Standard, Express, or Scheduled, and confirm.",
   },
   {
     icon: Tag,
-    title: "Transparent pricing",
+    title: "No hidden fees",
     description:
-      "See the price before you book. No hidden fees, no surprise surcharges at drop-off.",
+      "The full price is shown before you book, and that's what you pay — paid at booking by card, debit, ACH, Apple Pay, Google Pay, or PayPal.",
   },
   {
     icon: Share2,
-    title: "Real-time, shareable tracking",
+    title: "Live tracking",
     description:
-      "Follow your delivery live and share the tracking link with anyone waiting on the other end.",
+      "Follow your delivery in real time in the app, from pickup to drop-off.",
   },
   {
     icon: FileSignature,
-    title: "Photo & signature confirmation",
+    title: "Photo proof of delivery",
     description:
-      "Every delivery is confirmed with a photo and signature, so you know exactly when and how it arrived.",
+      "Every drop-off is confirmed with a photo and the recipient's signature or PIN.",
   },
 ] as const;
 
 // ---------------------------------------------------------------------------
-// /drive
+// /drive — mirrors the driver app onboarding and the admin payout settings
 // ---------------------------------------------------------------------------
 
 export const driverEarnings = [
-  { label: "End of day", description: "Cash out the same day you drive." },
-  { label: "Weekly", description: "Automatic payout on a weekly schedule." },
+  { label: "End of Day", description: "Everything you earned today, paid out at the end of the day." },
+  { label: "First of Week", description: "Last week's earnings, paid on the first day of the new week." },
   { label: "Bi-weekly", description: "Automatic payout every two weeks." },
-  { label: "On-demand", description: "Withdraw your wallet balance whenever you need to." },
+  { label: "Instant Cashout", description: "Withdraw your wallet balance any time (1.5% fee)." },
+] as const;
+
+export const driverPayoutNotes = [
+  "Your wallet is credited as soon as each delivery is completed.",
+  "Payouts go to your registered bank account by ACH.",
+  "Balances under $50 roll over to your next payout.",
+  "Per-delivery earnings, bonuses, and deductions are itemized in the app.",
 ] as const;
 
 export const driverRequirements = [
   { label: "Valid driver's license", icon: IdCard },
-  { label: "Roadworthy vehicle", icon: Wrench },
-  { label: "Background check", icon: ShieldCheck },
+  { label: "Government-issued photo ID", icon: UserCheck },
+  { label: "Vehicle registration & inspection", icon: Wrench },
+  { label: "Commercial auto insurance", icon: FileCheck },
+  { label: "Background & driving-record check", icon: ShieldCheck },
   { label: "TWIC / HazMat endorsement (optional)", icon: BadgeCheck },
 ] as const;
 
+export const driverVehicleTypes = ["Cargo vans", "Sprinter vans", "Box trucks"] as const;
+
 export const driverApplicationSteps = [
-  { step: "01", title: "Personal details", description: "Name, contact info, and service area." },
-  { step: "02", title: "Documents", description: "License and vehicle documentation upload." },
-  { step: "03", title: "Vehicle info", description: "Vehicle type, year, and capacity." },
-  { step: "04", title: "Background check consent", description: "Authorize your background check to finish onboarding." },
+  { step: "01", title: "Personal details", description: "Name, contact info, and preferred service area." },
+  { step: "02", title: "Documents", description: "License, photo ID, registration, and insurance uploads." },
+  { step: "03", title: "Vehicle info", description: "Vehicle type, year, plate, and capacity." },
+  { step: "04", title: "Background check", description: "Consent to your background and driving-record check." },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -363,12 +383,12 @@ export const whyKiaRelay = [
   {
     icon: FileCheck,
     title: "Compliance rigor",
-    description: "Hazmat-aware, HIPAA-aware, and DOT-aware handling built into how drivers are trained and dispatched.",
+    description: "Hazmat-aware and HIPAA-aware handling, with regulated loads only offered to drivers holding the right TWIC or HazMat endorsement.",
   },
   {
     icon: UserCheck,
     title: "Driver vetting",
-    description: "Every driver is background-checked before they're matched to a delivery.",
+    description: "Every driver is ID-verified and background-checked — criminal, driving record, and document review — before they're matched to a delivery.",
   },
   {
     icon: Radar,
@@ -388,6 +408,27 @@ export const contactRoutingOptions = [
 ] as const;
 
 // ---------------------------------------------------------------------------
+// Specialized services & company verification — taken from the Operations
+// Settings and Company Verification screens in the KiaRelay admin web app.
+// ---------------------------------------------------------------------------
+
+export const specializedServices = [
+  { icon: Route, title: "Multi-stop routes", description: "Add up to 5 stops to a single delivery route." },
+  { icon: Flame, title: "HazMat & heavy lift", description: "HazMat Class 3 and 8 and forklift-required loads, carried by endorsed drivers." },
+  { icon: Zap, title: "Hot-shot express", description: "Immediate driver assignment for high-urgency loads." },
+  { icon: Cross, title: "Healthcare & chain of custody", description: "Documented handling for medical supplies, specimens, and pharmaceuticals." },
+  { icon: Truck, title: "Oversized freight", description: "Box-truck capacity for large-format and palletized loads." },
+  { icon: Clock, title: "Waiting time, disclosed", description: "30 minutes on site is included; waiting beyond that is billed at the rate shown when you book." },
+] as const;
+
+export const companyVerificationItems = [
+  "Legal business name and registration number",
+  "Business address and contact email/phone",
+  "An authorized signatory for the account",
+  "Company documents for our compliance review",
+] as const;
+
+// ---------------------------------------------------------------------------
 // FAQs
 // ---------------------------------------------------------------------------
 
@@ -398,29 +439,34 @@ export const homeFaqs = [
       "Texas and Louisiana today, with a phased expansion into Arkansas, Oklahoma, Mississippi, and New Mexico as the network grows.",
   },
   {
+    question: "How do I book a delivery?",
+    answer:
+      "Download the KiaRelay app from the App Store or Google Play, create an account, and book — for your business or for yourself.",
+  },
+  {
     question: "What's the difference between Standard, Express, and Scheduled delivery?",
     answer:
-      "Standard is reliable, cost-effective delivery for shipments that aren't racing the clock. Express is priority dispatch and routing for shipments that need to move now. Scheduled lets you pick a specific date and time window for pickup and drop-off.",
+      "Standard is reliable, cost-effective delivery. Express gets priority dispatch and routing for shipments that need to move now. Scheduled lets you pick a specific date and time slot, up to 14 days ahead.",
+  },
+  {
+    question: "Are there hidden fees?",
+    answer:
+      "No. The full price — including any Express or specialized-handling charges — is shown before you confirm a booking. The only thing that can be added afterwards is waiting time beyond the 30 minutes included on site, billed at the rate shown when you booked.",
   },
   {
     question: "Are KiaRelay drivers vetted?",
     answer:
-      "Every driver is background-checked before being matched to a delivery, and drivers can carry optional TWIC or HazMat endorsements for restricted-site and regulated freight.",
+      "Yes. Every driver is ID-verified and background-checked (criminal and driving record), and their license, registration, and insurance are reviewed before they're matched to a delivery. TWIC and HazMat endorsements are verified for regulated loads.",
   },
   {
-    question: "How much does Express cost?",
+    question: "How is delivery confirmed?",
     answer:
-      "Express pricing depends on distance, weight, and urgency — contact us for a custom rate.",
+      "Every drop-off is confirmed with a photo plus the recipient's signature or a 4-digit PIN, recorded with GPS location and time.",
   },
   {
-    question: "Can I track my delivery in real time?",
+    question: "What if something is damaged, lost, or late?",
     answer:
-      "Yes. Every delivery includes real-time tracking with a shareable link, plus photo-and-signature confirmation once it's dropped off.",
-  },
-  {
-    question: "Do you handle hazmat or medical shipments?",
-    answer:
-      "Yes — hazmat-aware handling for refinery and oil/gas shipments, and HIPAA-aware, cold-chain-aware handling for healthcare shipments.",
+      "Report it from the order in the app. Our claims team reviews the delivery photos, GPS record, and signatures, and resolves eligible claims with a refund or account credit.",
   },
 ] as const;
 
@@ -428,27 +474,27 @@ export const businessFaqs = [
   {
     question: "How does billing work for company accounts?",
     answer:
-      "An invoice is sent immediately after each delivery, settled by ACH or card. There's no prepayment required.",
+      "An invoice is generated automatically once each delivery is confirmed. Standard terms are Net 30, settled by ACH, corporate card, or an approved line of credit. Other terms can be agreed per account.",
+  },
+  {
+    question: "What do I need to open a company account?",
+    answer:
+      "Your legal business name and registration number, business address and contact details, and an authorized signatory. We review your company documents before the account is activated.",
   },
   {
     question: "Can multiple people on my team book deliveries?",
     answer:
-      "Yes. Company accounts support multiple authorized users across branches, all under one account with shared visibility into shipments.",
+      "Yes. Company accounts support multiple authorized users across branches, all under one account with shared visibility into shipments and invoices.",
   },
   {
-    question: "Do you handle hazmat, cold-chain, or oversized freight?",
+    question: "Do you handle hazmat, healthcare, or oversized freight?",
     answer:
-      "Yes — handling is matched to your industry, including hazmat awareness for oil/gas, cold-chain awareness for healthcare, and dimensional pricing for large-format construction materials.",
+      "Yes — HazMat Class 3 and 8 with endorsed drivers, chain-of-custody handling for healthcare, heavy-lift and box-truck loads, and multi-stop routes of up to 5 stops.",
   },
   {
     question: "How is pricing determined?",
     answer:
-      "Pricing is based on weight, dimensions, and delivery type. Contact sales with your estimated monthly volume for a custom rate.",
-  },
-  {
-    question: "Is there a minimum shipment volume to open a company account?",
-    answer:
-      "There's no stated minimum — reach out to sales with your estimated volume and we'll get you set up.",
+      "By weight, dimensions, distance, and delivery type, plus any specialized handling your load needs. You see the full price before confirming each booking. Talk to sales about volume pricing.",
   },
   {
     question: "Do you provide spend or usage reporting?",
@@ -459,32 +505,28 @@ export const businessFaqs = [
 
 export const personalFaqs = [
   {
-    question: "Do I need an account to get a price?",
-    answer: "No — pricing is shown up front before you book, no account required.",
+    question: "How do I book a personal delivery?",
+    answer:
+      "Download the KiaRelay app, create a free account, enter pickup and drop-off details, choose Standard, Express, or Scheduled, and confirm.",
   },
   {
-    question: "How do I pay?",
-    answer:
-      "Individual bookings are paid at the time of booking by card, debit, ACH, Apple Pay, Google Pay, or PayPal.",
+    question: "Do I need an account?",
+    answer: "Yes. You'll create a free account in the app to see prices and book.",
   },
   {
-    question: "Can I track my delivery?",
+    question: "How will I pay?",
     answer:
-      "Yes — every delivery includes a real-time, shareable tracking link so you (or whoever's waiting) can follow it live.",
+      "At the time of booking, by card, debit, ACH, Apple Pay, Google Pay, or PayPal. The price you see before booking is the price you pay.",
   },
   {
     question: "How is delivery confirmed?",
     answer:
-      "Every delivery is confirmed with a photo and signature at drop-off, so you know exactly when and how it arrived.",
-  },
-  {
-    question: "When will individual booking be available?",
-    answer:
-      "Web booking is on the way. Email us and we'll let you know the moment you can book a delivery in your area.",
+      "Every delivery is confirmed with a drop-off photo and the recipient's signature or PIN, so you know exactly when and how it arrived.",
   },
   {
     question: "What can I send?",
-    answer: "Personal parcels, online purchases, and personal effects — sent door to door.",
+    answer:
+      "Personal parcels, online purchases, and personal effects. Illegal, dangerous, and other prohibited items can't be sent — see our Terms of Service.",
   },
 ] as const;
 
@@ -492,31 +534,30 @@ export const driverFaqs = [
   {
     question: "What do I need to start driving?",
     answer:
-      "A valid driver's license, a roadworthy vehicle, and a completed background check. TWIC and HazMat endorsements are optional but open up more delivery opportunities.",
+      "A valid driver's license, a government photo ID, a registered and inspected vehicle with commercial auto insurance, and a cleared background and driving-record check. TWIC and HazMat endorsements are optional but open up more deliveries.",
+  },
+  {
+    question: "What vehicles can I use?",
+    answer: "Cargo vans, Sprinter vans, and box trucks.",
+  },
+  {
+    question: "How do I apply?",
+    answer:
+      "Through the KiaRelay driver app — you'll add your details, upload documents, register your vehicle, and consent to the background check, all in the app.",
   },
   {
     question: "How fast do I get paid?",
     answer:
-      "Your wallet is credited immediately after every delivery. Cash out end of day, weekly, bi-weekly, or on demand.",
-  },
-  {
-    question: "Do I need a specific type of vehicle?",
-    answer:
-      "It depends on the job — cars, cargo vans, box trucks, and pickup trucks are all eligible vehicle types.",
-  },
-  {
-    question: "How long does the background check take?",
-    answer:
-      "Background checks are processed as part of onboarding after you submit your application — our driver recruiting team will follow up with next steps.",
+      "Your wallet is credited the moment each delivery is completed. Get paid End of Day, First of Week, or Bi-weekly by ACH — or cash out instantly any time for a 1.5% fee. Balances under $50 roll over to your next payout.",
   },
   {
     question: "Can I drive part-time?",
-    answer: "Yes — KiaRelay drivers work on their own schedule.",
+    answer: "Yes — KiaRelay drivers choose when they're available.",
   },
   {
     question: "Do TWIC or HazMat endorsements help?",
     answer:
-      "Yes — they qualify you for additional refinery, oil and gas, and other regulated-freight delivery opportunities.",
+      "Yes — they qualify you for refinery, oil and gas, and other regulated-freight deliveries that are only offered to endorsed drivers.",
   },
 ] as const;
 
@@ -524,17 +565,16 @@ export const industryFaqs = [
   {
     question: "How is pricing determined for this industry?",
     answer:
-      "Pricing reflects the handling your shipment requires — weight and hazmat class for oil/gas, dimensions for construction, and cold-chain/chain-of-custody requirements for healthcare. Contact sales for a custom rate.",
+      "Pricing reflects the handling your shipment requires — weight and hazmat class for oil/gas, dimensions for construction, and chain-of-custody requirements for healthcare. The full price is shown before you book; talk to sales about volume pricing.",
   },
   {
     question: "Are drivers trained for this type of shipment?",
     answer:
-      "Yes — drivers are background-checked and briefed on the site-access, handling, and compliance requirements specific to each industry before pickup.",
+      "Drivers are background-checked and briefed on the site-access, handling, and compliance requirements of each job before pickup. Regulated loads only go to drivers with the right endorsements.",
   },
   {
-    question: "Can this be a recurring or scheduled shipment?",
+    question: "Can I schedule shipments ahead of time?",
     answer:
-      "Yes — Scheduled delivery lets you set a recurring date and time window, useful for regular jobsite, facility, or business shipments.",
+      "Yes — Scheduled delivery lets you book a specific date and time slot up to 14 days in advance, useful for jobsite, facility, and dock deliveries.",
   },
 ] as const;
-

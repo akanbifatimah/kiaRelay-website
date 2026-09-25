@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { LOGIN_URL, SIGNUP_URL, primaryNavLinks, servicesMenu } from "@/lib/site-config";
+import { primaryNavLinks, servicesMenu } from "@/lib/site-config";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -112,14 +112,11 @@ export function MobileNav() {
           </div>
 
           <div className="mt-6 flex flex-col gap-3">
-            <Button href={LOGIN_URL} variant="outline" className="w-full">
-              Log In
-            </Button>
-            <Button href={SIGNUP_URL} variant="primary" className="w-full">
-              Sign Up
-            </Button>
             <Button href="/download" variant="primary" className="w-full">
-              Download the App
+              Get the App
+            </Button>
+            <Button href="/contact" variant="outline" className="w-full">
+              Contact Us
             </Button>
           </div>
         </div>

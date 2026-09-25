@@ -72,15 +72,17 @@ export default function AboutPage() {
           </div>
           <div className="mt-8 space-y-6 text-text-muted">
             <p>
-              Every delivery starts with a request — business or personal, one-time or
-              scheduled. That request is matched to a driver who has already been
-              background-checked, and who carries the TWIC or HazMat endorsements a
-              regulated shipment needs before it&apos;s ever offered to them.
+              Every delivery starts with a booking in the app — now, or scheduled up to 14 days
+              ahead, with the full price shown before it&apos;s confirmed. That booking is matched to
+              a driver who has already been ID-verified and background-checked, and a regulated
+              shipment is only offered to drivers carrying the TWIC or HazMat endorsement it
+              needs.
             </p>
             <p>
-              From pickup, the shipment is trackable in real time over a shareable link, so
-              there&apos;s no guessing where it is or when it&apos;ll arrive. Delivery is confirmed with
-              a photo and signature — proof that closes the loop on every single run.
+              From pickup, the shipment is trackable live in the KiaRelay app, so there&apos;s no
+              guessing where it is or when it&apos;ll arrive. Delivery is confirmed with a drop-off
+              photo and the recipient&apos;s signature or PIN, recorded with GPS location and time —
+              proof that closes the loop on every single run.
             </p>
             <p>
               Dispatch is technology-driven rather than ad hoc: drivers are matched based on

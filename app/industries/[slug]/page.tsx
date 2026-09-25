@@ -54,7 +54,7 @@ export default async function IndustryDetailPage({
         eyebrow="Industries"
         title={industry.name}
         description={industry.need}
-        primaryCta={{ label: industry.ctaLabel, href: "/business#quote" }}
+        primaryCta={{ label: industry.ctaLabel, href: "/business#contact-sales" }}
       />
 
       <section className="bg-bg py-20 sm:py-24">
