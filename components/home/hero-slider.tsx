@@ -35,7 +35,7 @@ export function HeroSlider() {
   const goTo = (next: number) => setIndex((next + heroSlides.length) % heroSlides.length);
 
   return (
-    <div onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)} className="lg:min-h-[26rem]">
+    <div onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)} className="lg:min-h-104">
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div key={slide.id} className="animate-[fade-slide_0.4s_ease] motion-reduce:animate-none">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">{slide.eyebrow}</p>
