@@ -114,7 +114,7 @@ export default function DrivePage() {
             ))}
           </ol>
 
-          <StoreButtons app="driver" tone="light" className="mt-10 sm:justify-start" />
+          <StoreButtons path="driver" className="mt-10 sm:justify-start" />
 
           <div className="mt-10">
             <ContactChannelCard {...contactChannels.drivers} />

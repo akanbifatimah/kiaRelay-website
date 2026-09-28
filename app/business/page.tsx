@@ -7,11 +7,11 @@ import { StoreButtons } from "@/components/store-buttons";
 import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { businessFeatures, industries, businessFaqs, specializedServices, companyVerificationItems } from "@/lib/content";
-import { contactChannels } from "@/lib/site-config";
+import { BUSINESS_BRAND, contactChannels, loginMenu } from "@/lib/site-config";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "For Business",
+  title: BUSINESS_BRAND,
   description:
     "Company accounts with invoiced Net 30 billing, multi-branch access, spend reporting, and industry-specific handling — built for procurement and operations teams.",
   path: "/business",
@@ -22,7 +22,7 @@ export default function BusinessPage() {
     <>
       <JsonLd data={faqJsonLd(businessFaqs)} />
       <PageHero
-        eyebrow="For Business"
+        eyebrow={BUSINESS_BRAND}
         title="Delivery logistics built for how procurement actually works."
         description="Company accounts with invoiced billing, multi-branch access, spend reporting, and industry-specific handling — for refineries, construction, healthcare, and commercial shippers across Texas and Louisiana."
         primaryCta={{ label: "Talk to Sales", href: "#contact-sales" }}
@@ -103,9 +103,9 @@ export default function BusinessPage() {
               Open a company account
             </h2>
             <p className="mt-3 text-text-muted">
-              Download the KiaRelay app and choose a <strong className="text-text">Business</strong> account
-              when you sign up. Company accounts are verified before activation, so have these ready.
-              Our sales team can also set up your account and walk your team through booking.
+              Download the KiaRelay app and choose <strong className="text-text">{BUSINESS_BRAND}</strong> when
+              you sign up, or register on the web. Company accounts are verified before activation, so have
+              these ready. Our sales team can also set up your account and walk your team through booking.
             </p>
             <ul className="mt-6 space-y-3">
               {companyVerificationItems.map((item) => (
@@ -115,7 +115,10 @@ export default function BusinessPage() {
                 </li>
               ))}
             </ul>
-            <StoreButtons app="customer" tone="light" className="mt-8 sm:justify-start" />
+            <StoreButtons path="business" className="mt-8 sm:justify-start" />
+            <a href={loginMenu.items[0].href} className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
+              Register or sign in to {BUSINESS_BRAND} on the web
+            </a>
           </div>
           <div className="self-start">
             <ContactChannelCard {...contactChannels.business} />

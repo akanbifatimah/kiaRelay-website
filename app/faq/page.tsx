@@ -3,6 +3,7 @@ import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { homeFaqs, businessFaqs, personalFaqs, driverFaqs } from "@/lib/content";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
+import { BUSINESS_BRAND } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
   title: "FAQ",
@@ -12,7 +13,7 @@ export const metadata = pageMetadata({
 
 const faqGroups = [
   { heading: "General", items: homeFaqs },
-  { heading: "For Business", items: businessFaqs },
+  { heading: BUSINESS_BRAND, items: businessFaqs },
   { heading: "For Individuals", items: personalFaqs },
   { heading: "For Drivers", items: driverFaqs },
 ] as const;

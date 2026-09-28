@@ -2,11 +2,12 @@
 
 Public marketing site for KiaRelay, a delivery logistics platform serving Texas and Louisiana. Built with Next.js (App Router), TypeScript, Tailwind CSS, and `next-themes`.
 
-The site is **informational only**. It has no backend, forms, or login:
+The site is **informational only**. It has no backend or forms of its own:
 
 - **Customers and drivers** sign up and sign in inside the KiaRelay mobile apps.
-- **The web app** at `app.kiarelay.com` is the internal staff dashboard, not a customer portal.
+- **The web app** at `app.kiarelay.com` hosts two sign-ins, linked from the header's **Log In** menu: **KiaRelay Business** (`/business/login`, which also offers registration) and **KiaRelay Admin** (`/login`) for staff. Set `NEXT_PUBLIC_WEB_APP_URL` if the web app lives elsewhere.
 - **Every call to action** is a page link, an email link, or a phone link.
+- The business product's name lives in one constant, `BUSINESS_BRAND` in `lib/site-config.ts`.
 
 ## Getting started
 
@@ -35,7 +36,7 @@ These are set in `lib/site-config.ts` or through environment variables:
 
 - [ ] `NEXT_PUBLIC_SITE_URL`: the production domain.
 - [ ] Store links for both apps. Until these are set, the badges link to a `#` placeholder:
-  - `NEXT_PUBLIC_CUSTOMER_APP_STORE_URL` and `NEXT_PUBLIC_CUSTOMER_PLAY_STORE_URL`: the **KiaRelay** customer app. One app covers individuals and companies, who choose a Personal or Business account at sign-up.
+  - `NEXT_PUBLIC_CUSTOMER_APP_STORE_URL` and `NEXT_PUBLIC_CUSTOMER_PLAY_STORE_URL`: the **KiaRelay** customer app. One app covers individuals and companies. `/download` still gives each its own labelled path (KiaRelay Business / KiaRelay for Individuals) and tells them which account to choose at sign-up.
   - `NEXT_PUBLIC_DRIVER_APP_STORE_URL` and `NEXT_PUBLIC_DRIVER_PLAY_STORE_URL`: the **KiaRelay Driver** app.
   - Confirm the app names in `APPS` in `lib/site-config.ts`.
 - [ ] `COMPANY_ADDRESS`: the registered address. Nothing shows an address until this is set.

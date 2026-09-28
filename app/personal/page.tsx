@@ -55,7 +55,7 @@ export default function PersonalPage() {
             Download the KiaRelay app and choose a <strong className="text-text">Personal</strong> account when you
             sign up. Then book your first delivery.
           </p>
-          <StoreButtons app="customer" tone="light" className="mt-8 sm:justify-start" />
+          <StoreButtons path="individual" className="mt-8 sm:justify-start" />
           <div className="mt-10">
             <ContactChannelCard {...contactChannels.individual} />
           </div>

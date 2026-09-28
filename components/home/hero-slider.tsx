@@ -45,11 +45,11 @@ export function HeroSlider() {
           </h1>
           <p className="mt-6 max-w-xl text-lg text-slate-300">{slide.description}</p>
 
-          {/* Each slide offers the store downloads for its own user type —
-              customer app for business/individual slides, driver app for the
-              driver slide (2026-09-25) — plus a quiet link to read more. */}
+          {/* Each slide offers the store downloads for its own download path
+              (business, individual or driver — TC-01, 2026-09-28) plus a
+              quiet link to read more. */}
           <p className="mt-8 text-sm font-medium text-white/80">{slide.appHint}</p>
-          <StoreButtons app={slide.app} className="mt-3 sm:justify-start" />
+          <StoreButtons path={slide.download} className="mt-3 sm:justify-start" />
           <Link
             href={slide.learnMore.href}
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"

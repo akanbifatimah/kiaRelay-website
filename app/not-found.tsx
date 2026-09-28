@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowRight, Building2, Smartphone, Truck, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BUSINESS_BRAND } from "@/lib/site-config";
 
 const quickLinks = [
-  { label: "For Business", href: "/business", icon: Building2 },
+  { label: BUSINESS_BRAND, href: "/business", icon: Building2 },
   { label: "For Individuals", href: "/personal", icon: UserRound },
   { label: "Drive with KiaRelay", href: "/drive", icon: Truck },
   { label: "Get the App", href: "/download", icon: Smartphone },

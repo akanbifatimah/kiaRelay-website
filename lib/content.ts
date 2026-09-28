@@ -32,6 +32,7 @@ import {
   Route,
   Zap,
 } from "lucide-react";
+import { BUSINESS_BRAND } from "@/lib/site-config";
 
 export const industries = [
   {
@@ -164,11 +165,11 @@ export const trustSignals = [
 
 export const splitCtaCards = [
   {
-    eyebrow: "For Business",
+    eyebrow: BUSINESS_BRAND,
     title: "Ship with KiaRelay",
     description:
       "Company accounts with invoiced billing, multi-branch access, and industry-specific handling.",
-    cta: "Explore Business Accounts",
+    cta: `Explore ${BUSINESS_BRAND}`,
     href: "/business",
   },
   {
@@ -192,15 +193,15 @@ export const splitCtaCards = [
 export const heroSlides = [
   {
     id: "business",
-    eyebrow: "For Business",
+    eyebrow: BUSINESS_BRAND,
     headline: "Ship it right,",
     highlight: "the first time.",
     description:
       "KiaRelay gives refineries, contractors, healthcare providers, and commercial shippers across Texas and Louisiana one company account for every delivery. Each shipment is handled by a vetted driver who is briefed on your site's requirements, and you can track it live from pickup to drop-off.",
-    // Hero shows this app's store buttons (2026-09-25) instead of CTA buttons.
-    app: "customer",
-    appHint: "Download the KiaRelay app and choose a Business account.",
-    learnMore: { label: "Learn more about business accounts", href: "/business" },
+    // Hero shows this path's store buttons (2026-09-25) instead of CTA buttons.
+    download: "business",
+    appHint: `Download the KiaRelay app and choose ${BUSINESS_BRAND}.`,
+    learnMore: { label: `Learn more about ${BUSINESS_BRAND}`, href: "/business" },
     trackingLabel: "KR-48213 · In Transit",
     progress: 65,
     fromIcon: Factory,
@@ -214,7 +215,7 @@ export const heroSlides = [
     highlight: "watch it move.",
     description:
       "Sending a package with KiaRelay is simple. You see the full price before you book, follow your delivery live in the app, and get a photo at drop-off as proof that it arrived safely.",
-    app: "customer",
+    download: "individual",
     appHint: "Download the KiaRelay app and choose a Personal account.",
     learnMore: { label: "See how personal deliveries work", href: "/personal" },
     trackingLabel: "KR-90142 · Out for Delivery",
@@ -230,7 +231,7 @@ export const heroSlides = [
     highlight: "track every dollar.",
     description:
       "Sign up in the KiaRelay driver app and choose when you work. Your wallet is credited as soon as each delivery is completed, and you get paid on the payout cycle that suits you.",
-    app: "driver",
+    download: "driver",
     appHint: "Download the KiaRelay Driver app to sign up.",
     learnMore: { label: "See driver requirements and pay", href: "/drive" },
     trackingLabel: "Wallet · Credited Today",

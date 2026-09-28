@@ -2,17 +2,38 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kiarelay.com";
 
-// There is no customer/driver login on the web: customers and drivers use the
-// KiaRelay mobile apps, and the web app at app.kiarelay.com is the internal
-// staff dashboard (PRD §2.4). So this site has no Log In / Sign Up.
+/** The business product's name (TC-14, 2026-09-28). One constant so a later
+ * naming change is a one-line edit. */
+export const BUSINESS_BRAND = "KiaRelay Business";
+
+// The web app (app.kiarelay.com) hosts two sign-ins (approved 2026-09-28):
+// KiaRelay Business accounts and KiaRelay admins. Customers and drivers
+// still sign in inside the mobile apps.
+const WEB_APP_URL = (process.env.NEXT_PUBLIC_WEB_APP_URL || "https://app.kiarelay.com").replace(/\/$/, "");
+
+export const loginMenu = {
+  label: "Log In",
+  items: [
+    {
+      label: BUSINESS_BRAND,
+      href: `${WEB_APP_URL}/business/login`,
+      description: "Sign in or register your company account.",
+    },
+    {
+      label: "KiaRelay Admin",
+      href: `${WEB_APP_URL}/login`,
+      description: "Access your dashboard as a KiaRelay staff.",
+    },
+  ],
+} as const;
 
 // All services (business, personal, driver) are presented as available
 // (client, 2026-09-25) — no "coming soon" copy anywhere.
 //
 // Two mobile apps, each on both stores:
 // - customer: one app with two interfaces. Individuals and companies pick
-//   "Personal" or "Business" when they sign up — the website tells them
-//   which to choose, since a store link can't open a specific screen.
+//   "Personal" or "KiaRelay Business" when they sign up — the website tells
+//   them which to choose, since a store link can't open a specific screen.
 // - driver: a separate app for drivers.
 // TODO: set the four NEXT_PUBLIC_*_URL variables below to the real store
 // listings (and confirm the app names); until then badges link to "#".
@@ -31,6 +52,17 @@ export const APPS = {
 
 export type AppKey = keyof typeof APPS;
 
+/** Separate, labelled download paths (TC-01, 2026-09-28). Business and
+ * Individual share the one customer app listing but each path tells the
+ * visitor which account to pick at sign-up. */
+export type DownloadPathKey = "business" | "individual" | "driver";
+
+export const DOWNLOAD_PATHS: Record<DownloadPathKey, { app: AppKey; label: string; signUpChoice?: string }> = {
+  business: { app: "customer", label: BUSINESS_BRAND, signUpChoice: BUSINESS_BRAND },
+  individual: { app: "customer", label: "KiaRelay for Individuals", signUpChoice: "Personal" },
+  driver: { app: "driver", label: "KiaRelay Driver" },
+};
+
 // TODO: single interim number supplied by the client (2026-09-25) — replace
 // with per-team numbers if/when they exist.
 export const PHONE = { display: "+234 813 743 3258", tel: "+2348137433258" };
@@ -47,7 +79,7 @@ export const servicesMenu = {
   label: "Ways to Relay",
   items: [
     {
-      label: "For Business",
+      label: BUSINESS_BRAND,
       href: "/business",
       description: "Company accounts, invoicing, and multi-branch shipping.",
     },
@@ -81,20 +113,27 @@ export const footerSitemap = [
     ],
   },
   {
-    heading: "For Business",
+    heading: BUSINESS_BRAND,
     links: [
-      { label: "Business Accounts", href: "/business" },
+      { label: "Company Accounts", href: "/business" },
       { label: "Industries We Serve", href: "/industries" },
-      { label: "Get the App", href: "/download" },
+      { label: `Get ${BUSINESS_BRAND}`, href: "/download#business" },
+      { label: "Business Log In", href: loginMenu.items[0].href },
     ],
   },
   {
     heading: "For Individuals",
-    links: [{ label: "Personal Deliveries", href: "/personal" }],
+    links: [
+      { label: "Personal Deliveries", href: "/personal" },
+      { label: "Get the App", href: "/download#individual" },
+    ],
   },
   {
     heading: "Drivers",
-    links: [{ label: "Drive with KiaRelay", href: "/drive" }],
+    links: [
+      { label: "Drive with KiaRelay", href: "/drive" },
+      { label: "Get the Driver App", href: "/download#driver" },
+    ],
   },
   {
     heading: "Legal",
