@@ -16,7 +16,8 @@ export const loginMenu = {
   items: [
     {
       label: BUSINESS_BRAND,
-      href: `${WEB_APP_URL}/business/login`,
+      // The web app's welcome page, which leads to sign-in or registration.
+      href: `${WEB_APP_URL}/business`,
       description: "Sign in or register your company account.",
     },
     {

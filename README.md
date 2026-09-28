@@ -5,7 +5,7 @@ Public marketing site for KiaRelay, a delivery logistics platform serving Texas 
 The site is **informational only**. It has no backend or forms of its own:
 
 - **Customers and drivers** sign up and sign in inside the KiaRelay mobile apps.
-- **The web app** at `app.kiarelay.com` hosts two sign-ins, linked from the header's **Log In** menu: **KiaRelay Business** (`/business/login`, which also offers registration) and **KiaRelay Admin** (`/login`) for staff. Set `NEXT_PUBLIC_WEB_APP_URL` if the web app lives elsewhere.
+- **The web app** at `app.kiarelay.com` hosts two sign-ins, linked from the header's **Log In** menu: **KiaRelay Business** (`/business`, a welcome page leading to sign-in or registration) and **KiaRelay Admin** (`/login`) for staff. Set `NEXT_PUBLIC_WEB_APP_URL` if the web app lives elsewhere.
 - **Every call to action** is a page link, an email link, or a phone link.
 - The business product's name lives in one constant, `BUSINESS_BRAND` in `lib/site-config.ts`.
 
