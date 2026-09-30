@@ -7,7 +7,7 @@ import { StoreButtons } from "@/components/store-buttons";
 import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { businessFeatures, industries, businessFaqs, specializedServices, companyVerificationItems } from "@/lib/content";
-import { BUSINESS_BRAND, contactChannels, loginMenu } from "@/lib/site-config";
+import { BUSINESS_BRAND, contactChannels, webAppLogin } from "@/lib/site-config";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -116,7 +116,7 @@ export default function BusinessPage() {
               ))}
             </ul>
             <StoreButtons path="business" className="mt-8 sm:justify-start" />
-            <a href={loginMenu.items[0].href} className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
+            <a href={webAppLogin.href} className="mt-4 inline-block text-sm font-medium text-primary hover:underline">
               Register or sign in to {BUSINESS_BRAND} on the web
             </a>
           </div>

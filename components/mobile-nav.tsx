@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { loginMenu, primaryNavLinks, servicesMenu } from "@/lib/site-config";
+import { primaryNavLinks, servicesMenu, webAppLogin } from "@/lib/site-config";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -107,18 +107,12 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-6 flex flex-col gap-1 border-t border-border pt-6">
-            <span className="px-3 pb-1 text-xs font-semibold uppercase tracking-wide text-text-muted">
-              {loginMenu.label}
-            </span>
-            {loginMenu.items.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-md px-3 py-3 text-base font-medium text-text hover:bg-bg"
-              >
-                {item.label}
-              </a>
-            ))}
+            <a
+              href={webAppLogin.href}
+              className="rounded-md px-3 py-3 text-base font-medium text-text hover:bg-bg"
+            >
+              {webAppLogin.label}
+            </a>
           </div>
 
           <div className="mt-6 flex items-center justify-between border-t border-border pt-6">

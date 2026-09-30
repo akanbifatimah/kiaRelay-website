@@ -4,7 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/mobile-nav";
 import { NavDropdown } from "@/components/nav-dropdown";
 import { Button } from "@/components/ui/button";
-import { loginMenu, primaryNavLinks, servicesMenu } from "@/lib/site-config";
+import { primaryNavLinks, servicesMenu, webAppLogin } from "@/lib/site-config";
 
 // TC-03 (2026-09-28): three zones on desktop, with logo left, nav centred
 // and actions right, each given its own column so they never crowd together.
@@ -30,11 +30,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center justify-end gap-4 lg:flex">
-          {/* Log In (approved 2026-09-28): KiaRelay Business accounts and
-              admins sign in on the web app. Customers and drivers still use
-              the mobile apps. */}
+          {/* Log In: one link to the web app's role-based sign-in, which
+              serves KiaRelay Business users and admins alike (2026-09-29).
+              Customers and drivers still use the mobile apps. */}
           <ThemeToggle />
-          <NavDropdown label={loginMenu.label} items={loginMenu.items} align="right" variant="outline" />
+          <Button href={webAppLogin.href} variant="outline" size="md">
+            {webAppLogin.label}
+          </Button>
           <Button href="/download" variant="primary" size="md">
             Get the App
           </Button>

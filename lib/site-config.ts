@@ -6,27 +6,15 @@ export const SITE_URL =
  * naming change is a one-line edit. */
 export const BUSINESS_BRAND = "KiaRelay Business";
 
-// The web app (app.kiarelay.com) hosts two sign-ins (approved 2026-09-28):
-// KiaRelay Business accounts and KiaRelay admins. Customers and drivers
-// still sign in inside the mobile apps.
-const WEB_APP_URL = (process.env.NEXT_PUBLIC_WEB_APP_URL || "https://app.kiarelay.com").replace(/\/$/, "");
+// The web app has one role-based sign-in page (PM decision, 2026-09-29): it
+// sends KiaRelay Business users and KiaRelay admins to their own dashboards,
+// and new companies register from it. So the site has a single Log In link,
+// with no separate staff option. The app's root opens that sign-in page (or
+// the dashboard, if already signed in). Customers and drivers still sign in
+// inside the mobile apps.
+const WEB_APP_URL = (process.env.NEXT_PUBLIC_WEB_APP_URL || "https://kiarelay-webapp.vercel.app").replace(/\/$/, "");
 
-export const loginMenu = {
-  label: "Log In",
-  items: [
-    {
-      label: BUSINESS_BRAND,
-      // The web app's welcome page, which leads to sign-in or registration.
-      href: `${WEB_APP_URL}/business`,
-      description: "Sign in or register your company account.",
-    },
-    {
-      label: "KiaRelay Admin",
-      href: `${WEB_APP_URL}/login`,
-      description: "Access your dashboard as a KiaRelay staff.",
-    },
-  ],
-} as const;
+export const webAppLogin = { label: "Log In", href: `${WEB_APP_URL}/` } as const;
 
 // All services (business, personal, driver) are presented as available
 // (client, 2026-09-25) — no "coming soon" copy anywhere.
@@ -119,7 +107,7 @@ export const footerSitemap = [
       { label: "Company Accounts", href: "/business" },
       { label: "Industries We Serve", href: "/industries" },
       { label: `Get ${BUSINESS_BRAND}`, href: "/download#business" },
-      { label: "Business Log In", href: loginMenu.items[0].href },
+      { label: "Log In", href: webAppLogin.href },
     ],
   },
   {

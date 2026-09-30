@@ -1,7 +1,7 @@
 import { Building2, CircleCheckBig, Truck, UserRound, type LucideIcon } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { StoreButtons } from "@/components/store-buttons";
-import { BUSINESS_BRAND, DOWNLOAD_PATHS, loginMenu, type DownloadPathKey } from "@/lib/site-config";
+import { BUSINESS_BRAND, DOWNLOAD_PATHS, webAppLogin, type DownloadPathKey } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -30,7 +30,7 @@ const cards: DownloadCard[] = [
     eyebrow: "For companies",
     description: "Company accounts with multiple users, branches, invoiced billing, and spend reporting.",
     features: ["Invoiced billing on approved terms", "Team members and branches under one account", "Track every company delivery live"],
-    extraLink: { label: `Prefer the web? Sign in or register for ${BUSINESS_BRAND}`, href: loginMenu.items[0].href },
+    extraLink: { label: `Prefer the web? Sign in or register for ${BUSINESS_BRAND}`, href: webAppLogin.href },
   },
   {
     id: "individual",
