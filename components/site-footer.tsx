@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { externalLinkProps } from "@/lib/utils";
 import { COMPANY_ADDRESS, PHONE, contactChannels, footerSitemap, serviceAreaStates } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -25,6 +26,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      {...externalLinkProps(link.href)}
                       className="text-sm text-slate-400 transition-colors hover:text-white"
                     >
                       {link.label}

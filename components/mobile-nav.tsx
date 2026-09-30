@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { primaryNavLinks, servicesMenu, webAppLogin } from "@/lib/site-config";
+import { externalLinkProps } from "@/lib/utils";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -109,6 +110,7 @@ export function MobileNav() {
           <div className="mt-6 flex flex-col gap-1 border-t border-border pt-6">
             <a
               href={webAppLogin.href}
+              {...externalLinkProps(webAppLogin.href)}
               className="rounded-md px-3 py-3 text-base font-medium text-text hover:bg-bg"
             >
               {webAppLogin.label}

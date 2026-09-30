@@ -2,6 +2,7 @@ import { Building2, CircleCheckBig, Truck, UserRound, type LucideIcon } from "lu
 import { PageHero } from "@/components/page-hero";
 import { StoreButtons } from "@/components/store-buttons";
 import { BUSINESS_BRAND, DOWNLOAD_PATHS, webAppLogin, type DownloadPathKey } from "@/lib/site-config";
+import { externalLinkProps } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -89,7 +90,7 @@ export default function DownloadPage() {
 
                 <StoreButtons path={card.id} className="mt-8 justify-start" />
                 {card.extraLink && (
-                  <a href={card.extraLink.href} className="mt-4 text-sm font-medium text-primary hover:underline">
+                  <a href={card.extraLink.href} {...externalLinkProps(card.extraLink.href)} className="mt-4 text-sm font-medium text-primary hover:underline">
                     {card.extraLink.label}
                   </a>
                 )}

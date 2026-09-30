@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { APPS, DOWNLOAD_PATHS, type DownloadPathKey } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
+import { cn, externalLinkProps } from "@/lib/utils";
 
 interface StoreButtonsProps {
   /** Which download path the badges belong to (business, individual, driver). */
@@ -33,12 +33,10 @@ export function StoreButtons({ path, className }: StoreButtonsProps) {
 }
 
 function StoreBadge({ href, ariaLabel, eyebrow, name, children }: { href: string; ariaLabel: string; eyebrow: string; name: string; children: ReactNode }) {
-  const external = href.startsWith("http");
   return (
     <a
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
+      {...externalLinkProps(href)}
       aria-label={ariaLabel}
       className="flex h-[52px] min-w-[168px] items-center gap-2.5 rounded-[10px] border border-[#A6A6A6] bg-black px-3.5 text-white transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >

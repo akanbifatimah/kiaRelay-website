@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn, externalLinkProps } from "@/lib/utils";
 
 const variantClasses = {
   primary:
@@ -59,7 +59,7 @@ export function Button({
   if ("href" in props && props.href) {
     const { href, target, rel } = props;
     return (
-      <Link href={href} target={target} rel={rel} className={classes}>
+      <Link href={href} {...externalLinkProps(href)} {...(target && { target })} {...(rel && { rel })} className={classes}>
         {children}
       </Link>
     );
